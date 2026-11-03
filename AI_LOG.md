@@ -31,6 +31,8 @@
 | Wrote in `README.md` that the API spec has 12 tests and 9 passed; it has 11 tests (12 calls) and 8 passed plus 3 expected failures | Final check against `npx playwright test --list` and the run output | Corrected in `README.md` |
 | Assumed the result URL always has a slash (`/domain/result/?q=`); the Storefront also lands on `/domain/result?q=` | The author's full run in the terminal failed on the URL check | Both forms accepted in `storefront.spec.ts` and `whois.spec.ts` |
 | Started a full run while the author was running `npm test` in the terminal; both runs shared `test-results/`, so each deleted the other's traces and they shared the call counter | `ENOENT` errors and an early budget stop; confirmed by reading the author's terminal | One run at a time; the two overlapping runs used about 28 API calls |
+| Reported a risk and undocumented behaviour as findings next to real bugs | The author's rule: a bug needs an expected result from the Wix documentation or the assignment | `FINDINGS.md` keeps four documented bugs; the rest moved to `OBSERVATIONS.md` |
+| The "another week" plan left out untested documented API cases, the UI observations, the selection path and browsers | The author asked whether it was thorough | Four items added; the mobile viewport item dropped at the author's request |
 
 ## Changed or thrown away
 
@@ -38,6 +40,7 @@
 - Dropped: a text-slicing redaction check; generic "first visible" locators.
 - Kept out of the suite: response substitution (used only to prove call-to-screen links during exploration).
 - `CLAUDE.md` went through three versions; the current one is short and keeps every safety rule.
+- Added `npm run test:web:headed` so the UI tests can be watched; the default stays headless.
 
 ## Not handed to the AI
 
