@@ -1,0 +1,44 @@
+# AI log
+
+## Tools
+
+- **Claude Code** (desktop app, Claude Opus 5.5): coding agent for the repo, docs and tests.
+- **Playwright MCP**: live exploration of the three web doors, including response substitution to prove which call drives which part of the screen.
+- **Postman**: manual API checks by the author (no-TLD and space-in-domain cases). Its AI assistant panel was open; whether its suggestions were used: UNKNOWN, author to confirm.
+- Tools and prompts from the exploration on 2–3 November: UNKNOWN, author to fill in.
+
+## Key prompts (this session)
+
+- The opening brief: role, sources of truth in order, P0 / P1 / Deferred, safety rules (no purchase, call budget, key only in `WIX_API_KEY`), and "stop before the first commit and wait for approval".
+- "Start with 4 doors and unauthorised user", then "start unauthorised then we will compare": shaped the flow structure of the plan and the API spec.
+- "Don't push anything without my approval", then the controlled-execution rules now in `CLAUDE.md`.
+- "Perform" the risk mitigation "both answers are taken within seconds": became the measured web-to-API gap check.
+- The TLD request with Postman screenshots, and "consistent with the error-messages page": became the space-domain test and the reworked F3.
+
+## Where the AI was wrong, and how it was caught
+
+| What the AI did | How it was caught | Fix |
+|---|---|---|
+| Wrote in F5 that two tests "passed" before they existed | Author's review ("stop, let me verify") | Line rewritten to match real runs; rule "report actual test results only" in `CLAUDE.md` |
+| Committed the assignment text and the observations file to the public repo in the first commit | Author asked to keep them out | Untracked and git-ignored; they remain in the history of the first commit, which was not rewritten |
+| Pushed early commits without asking each time | Author set the rule | Every commit and push now needs approval |
+| Storefront test typed into the header's search box and clicked the hero's button | Failing run and its page snapshot | Locators scoped to `<main>` |
+| Assumed a click works right after `load` | Searches were ignored in runs and in MCP | Retry the search until the page navigates |
+| WHOIS test read a response body discarded by navigation | Failing run; MCP logging of the call order | Match the call made by the result page. This also showed that the WHOIS entry page, not the result page, decides the branch |
+| Redaction check used a heading that was not rendered yet | Failing run | One retrying `toContainText` assertion |
+| Read the space-domain 400 as simply "rejected" | Author's Postman check against the error-messages page | Asserted as documented with `test.fail()`; F3 reframed as three error formats |
+| Counted "11 API tests" where it meant calls | Own audit | To be corrected in `TEST_PLAN.md` |
+
+## Changed or thrown away
+
+- Dropped: comparing full bodies between no-key and real-key calls (over budget); the verdict is compared instead, and F1 keeps the body evidence.
+- Dropped: a text-slicing redaction check; generic "first visible" locators.
+- Kept out of the suite: response substitution (used only to prove call-to-screen links during exploration).
+- `CLAUDE.md` went through three versions; the current one is short and keeps every safety rule.
+
+## Not handed to the AI
+
+- Creating the API key and writing `.env`; the agent never opened it.
+- Manual Postman verification of the TLD and error cases.
+- The logged-in dashboard capture in the author's own account.
+- Every commit and push decision.

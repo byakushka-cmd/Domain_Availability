@@ -10,33 +10,12 @@ Sources of truth, in order: `ASSIGNMENT.md`, then `WIX_DOMAINS_OBSERVATIONS.md`.
 - In web tests, assert what the screen means, not exact wording or which internal calls happen; both vary between loads.
 - Minimal code: no abstraction a test does not need. No emojis or filler.
 
-## Controlled execution
+## Working mode
 
-1. Work in small, isolated, single-purpose steps.
-2. Before every step, state what, why, and which files it affects.
-3. Wait for explicit approval.
-4. Execute only the approved step.
-5. Report changes, validation results and evidence.
-6. Stop before the next step.
-7. One approval authorizes one step only.
-
-## Git control
-
-- Never commit or push without explicit approval.
-- Each commit and each push needs its own approval.
+- Make the smallest reasonable change. Before it, say what, why and which files.
+- Stop after each logical step and wait for approval. One approval covers one step.
+- Never commit or push without explicit approval. Each commit and each push is approved separately.
 - Never squash, rewrite history or force-push without explicit approval.
-- Preserve the existing Git history.
-
-## Quality and scope
-
-- No autonomous multi-step execution.
-- No refactoring or features beyond the approved step.
-- Never claim tests passed unless they were executed and passed.
-- Keep implementation, execution and verification separate in every report.
-- Preserve existing working code unless a change is approved.
-- Avoid redundant investigation and unnecessary API calls.
-- Respect the assignment's 3-hour budget, measured from the first commit to the last.
-
-## Current project state
-
-- `FINDINGS.md` (uncommitted) has an unverified test-pass claim in F5 that needs separate review.
+- Keep code simple and focused on the assignment. No unnecessary abstractions or refactoring.
+- Report actual test results only. Never claim a test passed unless it ran and passed.
+- No emojis or verbose explanations.
