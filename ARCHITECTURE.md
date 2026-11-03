@@ -113,11 +113,12 @@ Base `https://www.wixapis.com`. These two GET endpoints are the public contract;
 | `GET /domain-search/v2/check-domain-availability` | `domain` required, must include the TLD, 3–63 characters, alphanumeric, hyphens and dots. Response `availability.{domain, available, premium, premiumType}`; `premiumType` enum `FIRST_YEAR_ONLY`, `FIRST_YEAR_AND_RENEWAL`. Error 400 `INVALID_DOMAIN`. | Documented |
 | `GET /domain-search/v2/suggest-domains` | `query` required, 1–100 characters, no TLD. `tlds` up to 10, no dot. `paging.limit` max 50; minimum given as both 0 and 1. `paging.cursor`, `maxLength` 3–63. Deprecated `limit` "will be removed on March 1, 2025" and still listed. Response `suggestions[].{domain, premium}`, `pagingMetadata.{count, cursors, hasNext}`. Errors 400 `INVALID_QUERY`, `INVALID_TLD_FORMAT`, `TLD_NOT_SUPPORTED`. A suggestion is "a suggested domain that's available for purchase". | Documented |
 | Auth | "Requires an account level API key". The curl examples send only `Authorization: <AUTH>`; the SDK examples pass a `siteId`. Whether `wix-account-id` is required: UNKNOWN. | Documented / UNKNOWN |
-| No key or invalid key | 200 with the same body as a normal answer, for both endpoints | Observed on 3 November |
-| Real key | Pending: re-check on 3 November | UNKNOWN |
+| No key, invalid key, real key | 200 with an identical body for `google.com`; the response headers have the same names, and only request IDs and the opaque `x-seen-by` list differ. `suggest-domains` also answers 200 without a key. The key is either not checked or not needed for these calls; which one is UNKNOWN. | Observed on 3 November, 11:39 UTC |
+| Errors with the real key | `domain=abc`: 400 `INVALID_DOMAIN` with `fieldViolations` on `domain`. `tlds=.com`: 400 `INVALID_TLD_FORMAT` with `fieldViolations` on `tlds`. Both match the documentation. | Observed on 3 November |
 
 - `paging.limit=100`: 400 with a structured `fieldViolations` entry (`paging.limit`, rule `MAX`, 50). `paging.limit=abc`: 400 "Failed to parse JSON or deserialize protobuf message" without the field name. Observed.
-- A non-premium domain returns `premiumType: "UNKNOWN_PREMIUM_TYPE"`, a value outside the documented enum, on both the public API and the web endpoint. Observed.
+- A non-premium domain returns `premiumType: "UNKNOWN_PREMIUM_TYPE"`, a value outside the documented enum, on both the public API and the web endpoint (`google.com`, `google.biz`, `google.art`, a random free `.com`). Observed. `premium: true` with `UNKNOWN_PREMIUM_TYPE` was seen on 2 November but did not reproduce on the public API on 3 November.
+- `suggest-domains?query=artisan bakery&tlds=com&paging.limit=5` returned 4 suggestions, `count: 4`, `hasNext: false`. `paging.limit` is a maximum, so this is within the contract. Observed.
 
 ## How the doors relate
 
@@ -129,7 +130,7 @@ Base `https://www.wixapis.com`. These two GET endpoints are the public contract;
 
 ## Gaps (UNKNOWN)
 
-- Public API behaviour with a real key, and the exact header set.
+- Whether the public API checks the key at all, and the exact header set: it answers identically without one.
 - Whether the web endpoints and the public API share a backend.
 - How `suggest-domains` decides a domain is available, and what the bulk call drives.
 - Whether the Generator re-checks availability at selection.
