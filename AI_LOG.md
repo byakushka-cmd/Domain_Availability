@@ -4,8 +4,8 @@
 
 - **Claude Code** (desktop app, Claude Opus 5.5): coding agent for the repo, docs and tests.
 - **Playwright MCP**: live exploration of the three web doors, including response substitution to prove which call drives which part of the screen.
-- **Postman**: manual API checks by the author (no-TLD and space-in-domain cases). Its AI assistant panel was open; whether its suggestions were used: UNKNOWN, author to confirm.
-- Tools and prompts from the exploration on 2–3 November: UNKNOWN, author to fill in.
+- **Postman**: used by the author for manual API checks (no-TLD and space-in-domain cases); the author passed the results to Claude Code as screenshots.
+- **ChatGPT and Claude**: used by the author during the exploration on 2–3 November, before this repo; the prompts from those sessions are not reproduced here.
 
 ## Key prompts (this session)
 
