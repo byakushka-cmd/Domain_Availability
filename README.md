@@ -37,7 +37,7 @@ Subsets: `npm run test:api`, `npm run test:web`. HTML report: `npx playwright sh
 
 | Spec | Door | Tests | Oracle | Public API calls |
 |---|---|---|---|---|
-| `tests/api/public-api.spec.ts` | Public API | 12: unauthorised (no key) first, then the same inputs with the real key | API documentation | 12 |
+| `tests/api/public-api.spec.ts` | Public API | 11: unauthorised (no key) first, then the same inputs with the real key | API documentation | 12 |
 | `tests/web/storefront.spec.ts` | Storefront | 2: a taken and a free name, searched from `wix.com/domains` | The page's own availability response, and the public API asked at the same moment | 2 |
 | `tests/web/whois.spec.ts` | WHOIS | 2: a registered domain shows registrar and redacted registrant; a free domain hands off to the Storefront result | The page's own availability response | 0 |
 | `tests/web/generator.spec.ts` | Generator | 1: the generated names are on screen, and the first domain offered is available | The generator's own response, and the public API | 1 |
@@ -57,7 +57,7 @@ Choices behind it:
 
 ## Last results
 
-Each spec was run on its own on 3 November 2026 from Israel: `public-api` at 14:55 (9 passed, 3 expected failures), `storefront` at 14:55 (2 passed), `whois` at 15:18 (2 passed), `generator` at 15:21 (1 passed). A full run of all specs together: not yet done.
+Each spec was run on its own on 3 November 2026 from Israel: `public-api` at 14:55 (8 passed, 3 expected failures), `storefront` at 14:55 (2 passed), `whois` at 15:18 (2 passed), `generator` at 15:21 (1 passed). A full run of all specs together: not yet done.
 
 Known limits: results hold for Israel only; locators rely on visible labels and placeholders; the first search right after page load was ignored on 3 November, so web tests retry the search until the page navigates.
 
