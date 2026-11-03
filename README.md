@@ -1,6 +1,6 @@
 # Wix Domains QA: "Can I get this name?"
 
-**Total time:** 2.5 hours.
+**Total time:** about 2 h 50 min, from the first commit (13:28) to the last (about 16:17) on 3 November 2026. Exploration on 2–3 November came before the first commit.
 
 Home assignment for the QA Engineer role on Wix Domains. One user question, four doors: the Domain Storefront, the Business Name Generator, the WHOIS lookup and the Public Domain Search API.
 
