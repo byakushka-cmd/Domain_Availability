@@ -15,3 +15,10 @@ blob-report/
 *.har
 
 .DS_Store
+
+# Local inputs only, not published
+ASSIGNMENT.md
+WIX_DOMAINS_OBSERVATIONS.md
+
+# Playwright MCP exploration logs
+.playwright-mcp/

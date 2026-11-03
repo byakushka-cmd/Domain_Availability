@@ -1,6 +1,6 @@
 # Agent rules for this repo
 
-Sources of truth, in order: `ASSIGNMENT.md`, then `WIX_DOMAINS_OBSERVATIONS.md`. If a request conflicts with `ASSIGNMENT.md`, stop and say so.
+Sources of truth, in order: `ASSIGNMENT.md`, then `WIX_DOMAINS_OBSERVATIONS.md`. Both are local only and git-ignored, so deliverables cite evidence inline (level and date), never "see observations". If a request conflicts with `ASSIGNMENT.md`, stop and say so.
 
 - Never buy, select a suggested domain, or navigate to checkout or sign-in. Tests search and read only.
 - No load testing, brute force or scraping. The public API client stops at 15 calls per run (`tests/support/wix-api.ts`). About 200 calls were used before this repo; the assignment allows a few hundred in total.
