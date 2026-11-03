@@ -15,7 +15,7 @@ async function searchWhois(page: Page, domain: string) {
   // (observed 3 November); wait for the check made by the result page it lands on.
   const webResponse = page.waitForResponse(
     r => r.url().includes(CHECK) && new URL(r.url()).searchParams.get('domain') === domain
-      && r.frame().url().includes('/domain/result/'),
+      && /\/domain\/result[/?]/.test(r.frame().url()),
   );
   // Enter submits the form the input belongs to, so the duplicate input on the page cannot be mismatched.
   const input = page.getByPlaceholder('Enter a domain name or URL').filter({ visible: true }).first();
@@ -23,7 +23,8 @@ async function searchWhois(page: Page, domain: string) {
   await expect(async () => {
     await input.fill(domain);
     await input.press('Enter');
-    await expect(page).toHaveURL(/\/domain\/result\//, { timeout: 3_000 });
+    // Both /domain/result?q= and /domain/result/?q= were seen on 3 November.
+    await expect(page).toHaveURL(/\/domain\/result[/?]/, { timeout: 3_000 });
   }).toPass({ timeout: 30_000 });
   const web = await (await webResponse).json();
   // The typed domain, TLD included, reaches the backend unchanged.
@@ -47,7 +48,7 @@ test.describe('WHOIS, unauthorised user', () => {
     const domain = `wixqa-${Math.random().toString(36).slice(2, 10)}.com`;
     const web = await searchWhois(page, domain);
     expect(web.availability.available).toBe(true);
-    await expect(page).toHaveURL(new RegExp(`/domain/result/\\?q=${domain.replace(/\./g, '\\.')}`), { timeout: 15_000 });
+    await expect(page).toHaveURL(new RegExp(`/domain/result/?\\?q=${domain.replace(/\./g, '\\.')}`), { timeout: 15_000 });
     await expect(page.getByText('Available now!').first()).toBeVisible();
     await expect(page.getByText(domain, { exact: true }).filter({ visible: true }).first()).toBeVisible();
   });

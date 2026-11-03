@@ -23,7 +23,8 @@ async function searchAndAskApi(page: Page, request: APIRequestContext, domain: s
   await expect(async () => {
     await main.getByPlaceholder('Type the domain you want').first().fill(domain);
     await main.getByRole('button', { name: 'Search Domains' }).first().click();
-    await expect(page).toHaveURL(/\/domain\/result\//, { timeout: 3_000 });
+    // Both /domain/result?q= and /domain/result/?q= were seen on 3 November.
+    await expect(page).toHaveURL(/\/domain\/result[/?]/, { timeout: 3_000 });
   }).toPass({ timeout: 30_000 });
   const web = await (await webResponse).json();
   const webAnsweredAt = Date.now();
