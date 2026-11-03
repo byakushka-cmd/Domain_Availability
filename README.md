@@ -57,7 +57,7 @@ Choices behind it:
 
 ## Last results
 
-Each spec was run on its own on 3 November 2026 from Israel: `public-api` at 14:55 (8 passed, 3 expected failures), `storefront` at 14:55 (2 passed), `whois` at 15:18 (2 passed), `generator` at 15:21 (1 passed). A full run of all specs together: not yet done.
+Full run on 3 November 2026 at 15:47 (Israel time), from Israel, nothing else running: 16 tests, all as expected (13 passed, 3 expected failures for F1 and F3), 0 unexpected, 50 seconds, exactly 15 public API calls. Web-to-API gaps: 653 ms (Generator), 530 ms and 555 ms (Storefront).
 
 Known limits: results hold for Israel only; locators rely on visible labels and placeholders; the first search right after page load was ignored on 3 November, so web tests retry the search until the page navigates.
 
