@@ -72,6 +72,10 @@ Known limits: results hold for Israel only; locators rely on visible labels and 
 6. Input normalisation on the web doors: uppercase, spaces, full URLs in WHOIS, internationalised domains.
 7. Logged-in flows in my own account (dashboard search, WHOIS 403, transfer validation) with a storage state kept out of git.
 8. CI with the key as a secret, nightly runs, flake tracking, accessibility checks and a mobile viewport.
+9. The documented API cases not yet covered: `INVALID_QUERY`, `TLD_NOT_SUPPORTED`, `maxLength`, the 10-TLD limit, length boundaries (domain 3–63, query 1–100), and whether the deprecated `limit` still works.
+10. The UI observations: whether the ignored first search (O4) affects real users, and a visual check of the Generator's error state (O5).
+11. The selection path up to sign-in, in my own account: does the Generator re-check availability at "Get It" (O1)?
+12. Firefox and WebKit, the Hebrew right-to-left locale, and WHOIS latency tracked over time.
 
 ## Quality strategy for Wix Domains, in 5 lines
 
