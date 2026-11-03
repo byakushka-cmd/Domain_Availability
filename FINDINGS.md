@@ -90,4 +90,4 @@ curl -i 'https://www.wixapis.com/domain-search/v2/check-domain-availability?doma
 
 **Severity: Medium** if it happens: wrong answer to the core question, discovered late. **Priority: Medium:** cheap to monitor.
 
-**Mitigation in this repo.** `public-api.spec.ts` checks the first API suggestion with `check-domain-availability`; it passed in both runs on 3 November (13:53 and 14:55 local time). A Generator-side check of the first domain the Generator shows is planned in `generator.spec.ts` and not yet written. One suggestion per run is a sample, not proof; with another week this becomes a scheduled check over many suggestions.
+**Mitigation in this repo.** `public-api.spec.ts` checks the first API suggestion with `check-domain-availability`; it passed in both runs on 3 November (13:53 and 14:55 local time). `generator.spec.ts` checks the first domain the Generator shows the same way; it passed on 3 November at 15:21. One suggestion per run is a sample, not proof; with another week this becomes a scheduled check over many suggestions.

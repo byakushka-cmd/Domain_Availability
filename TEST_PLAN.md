@@ -75,4 +75,4 @@ How the doors are built and what each call drives: `ARCHITECTURE.md`.
 | Suggestions and generated names differ per call | Tests compare a door with its own response from the same load, never with a stored list |
 | Selector or wording changes on wix.com | Locators use visible labels and placeholders; assertions use domain names and verdicts |
 | WHOIS details arrive after about 15 seconds | 60-second web test timeout; waits on content, not on time |
-| API call budget | About 210 calls used by the start of automation; 14 public API calls per full run (11 API tests, 3 web comparisons) |
+| API call budget | About 210 calls used by the start of automation; 15 public API calls per full run (12 API, 3 web comparisons) |

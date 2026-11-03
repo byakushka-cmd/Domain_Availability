@@ -81,7 +81,7 @@ Entry `W/domains/whois`, field "Enter a domain name or URL", Enter key, result p
 
 | Call | Drives on screen | Level |
 |---|---|---|
-| `GET W/domain-search/v2/check-domain-availability?domain=` | The branch. `available=true`: client-side redirect to the Storefront result `W/domain/result/?q=` with "Available now!". `available=false`: WHOIS panel. | Verified: flipping `available` to `true` for `google.com` redirected to the Storefront result. The natural redirect for a random free name: Observed. |
+| `GET W/domain-search/v2/check-domain-availability?domain=` | The branch, decided by the entry page on submit. Free: it goes straight to the Storefront result `W/domain/result/?q=`, which checks again and shows "Available now!". Taken: it goes to `W/domain/result/whois?query=`, which checks again and shows the WHOIS panel. | Call order Observed on 3 November. Opening the WHOIS result URL with `available` flipped to `true` for `google.com` redirected to the Storefront result: Verified. |
 | `GET S/structured-domain-info/rdap-url`, then the browser calls external RDAP, then `POST S/structured-domain-info/parse-rdap` (twice), then `GET S/structured-domain-info/whois?domain=&parse=` | Registered-domain details | Chain Observed |
 | `POST S/structured-domain-info/parse-rdap` | Created / updated / expiry dates, name servers, status, registrar | Verified: replacing "MarkMonitor Inc." in the response changed the registrar on screen |
 | `GET W/v1/domain-broker-offers/query` | UNKNOWN; returned 500 `Failed to extract tenant` anonymously | Observed on 2 November |

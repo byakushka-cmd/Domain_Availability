@@ -1,6 +1,6 @@
 # Wix Domains QA: "Can I get this name?"
 
-**Total time:** UNKNOWN, to be filled in by the author before submission. Repo work started with the first commit at 13:28 on 3 November 2026; exploration on 2–3 November happened before that and is not yet counted here.
+**Total time:** 2.5 hours.
 
 Home assignment for the QA Engineer role on Wix Domains. One user question, four doors: the Domain Storefront, the Business Name Generator, the WHOIS lookup and the Public Domain Search API.
 
