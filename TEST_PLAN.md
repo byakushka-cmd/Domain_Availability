@@ -43,9 +43,9 @@ How the doors are built and what each call drives: `ARCHITECTURE.md`.
 | P1-1 | WHOIS | Registered domain: the details panel shows the registrar and creation date; registrant contact is redacted | `whois.spec.ts` |
 | P1-2 | WHOIS | Free domain: hands off to the Storefront result with "Available now!", consistent with the page's own availability response | `whois.spec.ts` |
 | P1-3 | Generator | The names on screen are the names the generator returned; the first domain offered for the first name is available according to the public API | `generator.spec.ts` |
-| P1-4 | API | Error handling: a type error in `paging.limit` names the field, like a range error does | Manual, 3 November: finding F3 |
+| P1-4 | API | Error handling: a type error in `paging.limit` names the field, like a range error does | Manual, 3 November: observation O2 |
 | P1-5 | API | `premiumType` conforms to the documented enum | Manual, 3 November: finding F2 |
-| P1-6 | API docs | Auth headers, `paging.limit` minimum, deprecated `limit` are documented consistently | Manual review: finding F4 |
+| P1-6 | API docs | Auth headers, `paging.limit` minimum, deprecated `limit` are documented consistently | Manual review: finding F4 (`paging.limit` minimum), observation O3 (auth headers, deprecated `limit`) |
 | P1-7 | Storefront, WHOIS | Input without a TLD, uppercase, surrounding spaces, a full URL (WHOIS asks for "a domain name or URL") | Planned, not executed: UNKNOWN |
 | P1-8 | All web doors | Web verdict equals the public API verdict on names whose answer does not change | Covered by P0-9 for `google.com`; more stable names left for another week |
 
@@ -59,7 +59,7 @@ How the doors are built and what each call drives: `ARCHITECTURE.md`.
 | Geography | One location (Israel) available. |
 | Mocks and stubbed contract tests | Response substitution was used once to prove which call drives the screen; turning it into a suite is next-week work. |
 | Logged-in web flows | Outside the anonymous conditions. Two candidates (WHOIS `whois` endpoint returning 403 when logged in; transfer validation reporting an error inside a 200 body) stay unverified for that reason. |
-| Generator console error (`borderColor=""`) | No user-visible effect shown yet; needs a visual check. |
+| Generator console error (`borderColor=""`) | No user-visible effect shown yet; needs a visual check. Recorded as observation O5. |
 
 ## Never in scope
 

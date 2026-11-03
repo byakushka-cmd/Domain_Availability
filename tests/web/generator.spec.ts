@@ -29,7 +29,7 @@ test.describe('Business Name Generator, unauthorised user', () => {
     const suggestResponse = await suggested;
     const { suggestions } = await suggestResponse.json();
     const webAnsweredAt = Date.now();
-    // The Generator asks for domains for its first name only; it makes no availability check (finding F5).
+    // The Generator asks for domains for its first name only; it makes no availability check (observation O1).
     expect(new URL(suggestResponse.url()).searchParams.get('query')).toBe(businessNames[0].name);
     const firstDomain: string = suggestions[0].domain;
 

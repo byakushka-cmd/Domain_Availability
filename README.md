@@ -8,7 +8,8 @@ Home assignment for the QA Engineer role on Wix Domains. One user question, four
 |---|---|
 | [ARCHITECTURE.md](ARCHITECTURE.md) | What each door is made of, which calls drive which part of the screen, how the doors relate; Mermaid diagram and evidence levels |
 | [TEST_PLAN.md](TEST_PLAN.md) | Scope, approach, P0 / P1 / Deferred with reasons, exclusions, risks |
-| [FINDINGS.md](FINDINGS.md) | Five findings with evidence, severity and priority |
+| [FINDINGS.md](FINDINGS.md) | Four bugs: documented expected result versus actual result, with evidence, severity and priority |
+| [OBSERVATIONS.md](OBSERVATIONS.md) | Risks and observations without a documented expected result, including two UI items |
 | [AI_LOG.md](AI_LOG.md) | AI tools, key prompts, where the AI was wrong, what was kept out of its hands |
 | [CLAUDE.md](CLAUDE.md) | Rules for the coding agent in this repo |
 | `tests/` | Playwright + TypeScript automation |
@@ -63,7 +64,7 @@ Known limits: results hold for Israel only; locators rely on visible labels and 
 
 ## With another week
 
-1. A scheduled cross-door monitor: many suggestions from the API and the Generator checked with `check-domain-availability`, and web verdicts compared with the API on stable names; alert on disagreement (F5).
+1. A scheduled cross-door monitor: many suggestions from the API and the Generator checked with `check-domain-availability`, and web verdicts compared with the API on stable names; alert on disagreement (observation O1).
 2. Runs from several countries for prices, currency and country-specific suggestions.
 3. Pricing and premium coverage with a per-market oracle and known premium names, once F2 is decided.
 4. Schema-level contract tests generated from the documentation, plus pagination and cursor tests, including cursor tampering as a security test.

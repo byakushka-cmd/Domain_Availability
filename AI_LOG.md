@@ -26,7 +26,7 @@
 | Assumed a click works right after `load` | Searches were ignored in runs and in MCP | Retry the search until the page navigates |
 | WHOIS test read a response body discarded by navigation | Failing run; MCP logging of the call order | Match the call made by the result page. This also showed that the WHOIS entry page, not the result page, decides the branch |
 | Redaction check used a heading that was not rendered yet | Failing run | One retrying `toContainText` assertion |
-| Read the space-domain 400 as simply "rejected" | Author's Postman check against the error-messages page | Asserted as documented with `test.fail()`; F3 reframed as three error formats |
+| Read the space-domain 400 as simply "rejected" | Author's Postman check against the error-messages page | Asserted as documented with `test.fail()`; F3 rewritten against the error-messages page |
 | Counted "11 API tests" where it meant calls | Own audit | Corrected in `TEST_PLAN.md` |
 | Wrote in `README.md` that the API spec has 12 tests and 9 passed; it has 11 tests (12 calls) and 8 passed plus 3 expected failures | Final check against `npx playwright test --list` and the run output | Corrected in `README.md` |
 | Assumed the result URL always has a slash (`/domain/result/?q=`); the Storefront also lands on `/domain/result?q=` | The author's full run in the terminal failed on the URL check | Both forms accepted in `storefront.spec.ts` and `whois.spec.ts` |
