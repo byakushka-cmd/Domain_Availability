@@ -6,6 +6,7 @@
     "test": "playwright test",
     "test:api": "playwright test --project=api",
     "test:web": "playwright test --project=web",
+    "test:web:headed": "playwright test --project=web --headed",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
