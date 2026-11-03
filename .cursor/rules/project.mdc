@@ -1,0 +1,5 @@
+---
+description: Rules for any agent working in this repo
+alwaysApply: true
+---
+Follow CLAUDE.md in the repo root before every change. It holds the safety rules (no purchase or checkout, at most 15 public API calls per run, the key only in WIX_API_KEY via .env, never commit .env) and the working mode (smallest change, approval before each step, commit and push only with approval).
