@@ -1,0 +1,17 @@
+node_modules/
+
+# Secrets: the API key lives only in .env
+.env
+.env.*
+!.env.example
+
+# Test output: reports and traces can contain request headers
+playwright-report/
+test-results/
+blob-report/
+*.zip
+
+# Network captures contain x-xsrf-token and cookies
+*.har
+
+.DS_Store
